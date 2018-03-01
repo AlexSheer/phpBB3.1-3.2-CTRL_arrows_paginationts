@@ -34,4 +34,6 @@ function defineHotKey(key,code)
 	var next_page = next.split('amp;').join('');
 	defineHotKey('ctrl+39',"window.location=next_page");
 <!-- ENDIF -->
+$('.pagination a[rel="prev"]').attr("title", "Ctrl + ←");
+$('.pagination a[rel="next"]').attr("title", "Ctrl + →");
 </script>
