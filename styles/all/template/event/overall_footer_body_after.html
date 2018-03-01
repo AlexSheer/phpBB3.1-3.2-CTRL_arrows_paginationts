@@ -1,39 +1,29 @@
 
 <script>
-function defineHotKey(key,code)
-{
-	if(typeof(key) == 'string')
-	{
-		var plus = key.indexOf('+');
-		var key0 = plus > 0 ? key.substr(0,plus).toLowerCase() : undefined;
-		if(!/^(ctrl|alt|shift)$/.test(key0)) return false;
-		var key1 = key.substr(plus+1)*1;
-	}
-	else key1 = key;
-	function react(e)
-	{
-		var e = e || window.event;
-		var keyCode = e.which || e.keyCode;
-		if((eval('e.'+key0+'Key')?key0:!key0) && keyCode == key1)
-		{
-			if(e.preventDefault) e.preventDefault(); e.returnValue = false;
-			eval(code);
-		}
-	}
-	if(document.addEventListener) document.addEventListener('keydown',react,false);
-	else if(document.attachEvent) document.attachEvent('onkeydown',react);
-}
-
-<!-- IF U_PREVIOUS_PAGE -->
-	var previous = '{U_PREVIOUS_PAGE}';
-	var previous_page = previous.split('amp;').join('');
-	defineHotKey('ctrl+37',"window.location=previous_page");
-<!-- ENDIF -->
-<!-- IF U_NEXT_PAGE -->
-	var next = '{U_NEXT_PAGE}';
-	var next_page = next.split('amp;').join('');
-	defineHotKey('ctrl+39',"window.location=next_page");
-<!-- ENDIF -->
 $('.pagination a[rel="prev"]').attr("title", "Ctrl + ←");
 $('.pagination a[rel="next"]').attr("title", "Ctrl + →");
+
+$(document).ready(function() {
+	$(this).keydown(function(e) {
+		e.preventDefault();
+		if(e.keyCode == 39)
+		{
+			// Next
+			<!-- IF U_NEXT_PAGE -->
+			var next = '{U_NEXT_PAGE}';
+			var next_page = next.split('amp;').join('');
+			window.location.href = next_page;
+			<!-- ENDIF -->
+		}
+		else if (e.keyCode == 37)
+		{
+			// Prev
+			<!-- IF U_PREVIOUS_PAGE -->
+			var previous = '{U_PREVIOUS_PAGE}';
+			var previous_page = previous.split('amp;').join('');
+			window.location.href = previous_page;
+			<!-- ENDIF -->
+		}
+	});
+});
 </script>
