@@ -1,0 +1,32 @@
+{
+    "name": "sheer/ctrlnavigation",
+    "type": "phpbb-extension",
+    "description": "Paginal navigation with the keys Ctrl + left/right arrow",
+    "homepage": "https://www.phpbbguru.net/community/",
+    "version": "1.0.0",
+    "time": "2018-03-01",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Sheer",
+            "homepage": "https://www.phpbbguru.net/community/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "display-name": "Ctrl arrows pagination",
+        "soft-require": {
+            "phpbb/phpbb": "3.1.0"
+        },
+        "version-check": {
+            "host": "sheer.phpbbguru.net",
+            "ssl": true,
+            "directory": "/versions/ctrlnavigation",
+            "filename": "version.json"
+        }
+    }
+}
