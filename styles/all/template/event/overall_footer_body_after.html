@@ -6,7 +6,7 @@ $('.pagination a[rel="next"]').attr("title", "Ctrl + →");
 $(document).ready(function() {
 	$(this).keydown(function(e) {
 		//e.preventDefault();
-		if(e.keyCode == 39)
+		if(e.keyCode == 39 && e.ctrlKey)
 		{
 			// Next
 			<!-- IF U_NEXT_PAGE -->
@@ -15,7 +15,7 @@ $(document).ready(function() {
 			window.location.href = next_page;
 			<!-- ENDIF -->
 		}
-		else if (e.keyCode == 37)
+		else if (e.keyCode == 37 && e.ctrlKey)
 		{
 			// Prev
 			<!-- IF U_PREVIOUS_PAGE -->
